@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ka's Hagesenter - Artikler</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Reseponsivt design -->
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="icon" href="icon.png" />
+
+    <style>
+      #publiserteInnlegg {
+        background-color: transparent !important;
+        padding: 0px;
+        margin: 0px;
+        border: none;
+      }
+      #🎁 div {
+        margin: 5px;
+        background-color: rgba(20, 30, 25, 0.1);
+      }
+      #kode {
+        position: absolute;
+        top: 10px;
+        width: 100px;
+        background-color: rgba(128, 128, 128, 0.1);
+        box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div onclick="meny()" id="menyKnapp">
+      <div class="burger"></div>
+      <div class="burger"></div>
+      <div class="burger"></div>
+    </div>
+    <ul id="meny">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./galleri.html">Galleri</a></li>
+      <li><a class="active" href="./artikler.html">Artikler</a></li>
+      <li><a href="./omOss.html">Om oss</a></li>
+      <li><a href="./spill.html">Virtuell Plante</a></li>
+    </ul>
+    <div id="🎁">
+      <h1>
+        <a href="./index.html"
+          ><img src="./icon.png" height="54px" width="54px" alt="Ikon" /> Ka's
+          Hagesenter</a
+        >
+      </h1>
+      <input type="password" id="kode" placeholder="redigeringstilgang" />
+      <div id="nytt">
+        <label for="overskrift2"> Overskrift </label>
+        <input type="text" id="overskrift2" placeholder="Hei igjen!👋" />
+        <label for="innhold2"> Innhold </label>
+        <textarea id="innhold2" placeholder="Hva tenker du på?"></textarea>
+
+        <p>preview:</p>
+        <div>
+          <h2 id="overskrift">Hei igjen!👋</h2>
+          <p id="innhold">I dag opplevde jeg...</p>
+        </div>
+        <button>Publiser</button>
+      </div>
+      <h1>Sesongens tips</h1>
+      <div id="publiserteInnlegg"></div>
+    </div>
+    <script src="./common.js"></script>
+
+    <script>
+      let buttonsEl = document.querySelectorAll("button");
+      /*       buttonsEl[1].style.marginLeft = "10px";
+       */ let inputEl = document.querySelector("#overskrift2");
+      let kodeEl = document.querySelector("#kode");
+      let textareaEl = document.querySelector("textarea");
+      let vinduEl = document.querySelector("#nytt");
+      let overskriftEl = document.querySelector("#overskrift");
+      let innholdEl = document.querySelector("#innhold");
+      let publiserteEl = document.querySelector("#publiserteInnlegg");
+      let alleInnlegg = [
+        {
+          id: 1,
+          overskrift: "Leaf it to us",
+          innhold:
+            "Aenean elementum, dolor vitae imperdiet hendrerit, augue turpis gravida ipsum, sed tempus ipsum mauris vitae nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ut efficitur augue, non mattis elit. Vivamus ac fringilla mauris, at fringilla augue. Cras malesuada, sem pulvinar fringilla accumsan libero ligula placerat ligula, ultricies interdum neque felis in sem."
+        },
+        {
+          id: 2,
+          overskrift: "Ok, bloomer",
+          innhold:
+            "Aenean elementum, dolor vitae imperdiet hendrerit, augue turpis gravida ipsum, sed tempus ipsum mauris vitae nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ut efficitur augue, non mattis elit. Vivamus ac fringilla mauris, at fringilla augue. Cras malesuada, sem pulvinar fringilla accumsan libero ligula placerat ligula, ultricies interdum neque felis in sem."
+        },
+        {
+          id: 3,
+          overskrift: "We're rooting for you",
+          innhold:
+            "Aenean elementum, dolor vitae imperdiet hendrerit, augue turpis gravida ipsum, sed tempus ipsum mauris vitae nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ut efficitur augue, non mattis elit. Vivamus ac fringilla mauris, at fringilla augue. Cras malesuada, sem pulvinar fringilla accumsan libero ligula placerat ligula, ultricies interdum neque felis in sem."
+        },
+        {
+          id: 4,
+          overskrift: "It's a leaf of fait",
+          innhold:
+            "Aenean elementum, dolor vitae imperdiet hendrerit, augue turpis gravida ipsum, sed tempus ipsum mauris vitae nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ut efficitur augue, non mattis elit. Vivamus ac fringilla mauris, at fringilla augue. Cras malesuada, sem pulvinar fringilla accumsan libero ligula placerat ligula, ultricies interdum neque felis in sem."
+        },
+        {
+          id: 5,
+          overskrift: "It's party thyme",
+          innhold:
+            "Aenean elementum, dolor vitae imperdiet hendrerit, augue turpis gravida ipsum, sed tempus ipsum mauris vitae nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ut efficitur augue, non mattis elit. Vivamus ac fringilla mauris, at fringilla augue. Cras malesuada, sem pulvinar fringilla accumsan libero ligula placerat ligula, ultricies interdum neque felis in sem."
+        }
+      ];
+
+      vinduEl.style.display = "none";
+      kodeEl.addEventListener("input", open);
+      buttonsEl[0].addEventListener("click", publish);
+      inputEl.addEventListener("change", preview);
+      textareaEl.addEventListener("input", preview);
+
+      // fra publish
+      for (let i = 0; i < alleInnlegg.length; i++) {
+        let setInn = "<div><h2>" + alleInnlegg[i].overskrift + "</h2>";
+        setInn += "<p>" + alleInnlegg[i].innhold + "<p></div>";
+        publiserteEl.innerHTML += setInn;
+      }
+      function send() {
+        let tilSky = JSON.stringify(alleInnlegg[0]);
+
+        for (let i = 1; i < alleInnlegg.length; i++) {
+          let text = JSON.stringify(alleInnlegg[i]);
+          tilSky += "§§§" + text;
+        }
+        localStorage.sesongensTips = tilSky;
+      }
+      function retrieve() {
+        let fraSky = localStorage.sesongensTips.split("§§§");
+        alleInnlegg = [];
+        for (let i = 0; i < fraSky.length; i++) {
+          alleInnlegg.push(JSON.parse(fraSky[i]));
+        }
+      }
+      function open() {
+        if (kodeEl.value == "kas") {
+          //KODEN ER: kas
+          vinduEl.style.display = "block";
+          vinduEl.style.border = "1px solid white";
+        } else {
+          vinduEl.style.display = "none";
+        }
+      }
+      function preview() {
+        overskriftEl.innerHTML = inputEl.value;
+        innholdEl.innerHTML = textareaEl.value;
+      }
+      function publish() {
+        if (inputEl.value == "" || textareaEl.value == "") {
+          vinduEl.innerHTML += "Fyll inn alle feltene";
+        } else {
+          let nyttInnlegg = {};
+          nyttInnlegg.id = 1;
+          for (let i = 0; i < alleInnlegg.length; i++) {
+            nyttInnlegg.id++;
+          }
+          nyttInnlegg.overskrift = inputEl.value;
+          nyttInnlegg.innhold = textareaEl.value;
+          alleInnlegg.unshift(nyttInnlegg);
+          alleInnlegg.sort(function (a, b) {
+            return b.id - a.id;
+          });
+          send();
+          close();
+          inputEl.value = "";
+          textareaEl.value = "";
+        }
+
+        publiserteEl.innerHTML = "";
+        for (let i = 0; i < alleInnlegg.length; i++) {
+          let setInn = "<div><h2>" + alleInnlegg[i].overskrift + "</h2>";
+          setInn += "<p>" + alleInnlegg[i].innhold + "<p></div>";
+          publiserteEl.innerHTML += setInn;
+        }
+      }
+    </script>
+  </body>
+</html>

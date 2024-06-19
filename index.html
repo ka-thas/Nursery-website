@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ka's Hagesenter - Forside</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Reseponsivt design -->
+    <link rel="icon" href="icon.png" />
+    <!-- emojier vises forskjellig -->
+    <link rel="stylesheet" href="stylesheet.css" />
+
+    <style>
+      h1 {
+        margin: 0px;
+      }
+      div {
+        margin: 0px;
+        padding: 0px;
+        background-color: transparent;
+      }
+      #logo a {
+        position: absolute;
+        left: 22vw;
+        top: 15vw;
+        padding: 2vw;
+        color: white;
+        text-align: center;
+        font-size: 5vw;
+        text-shadow: 0 1px 10px black;
+        background-color: rgba(5, 27, 22, 0.5);
+        background-blend-mode: multiply;
+        outline: 1px solid white;
+        border-radius: 2vw;
+      }
+      #logo a img {
+        height: 6vw;
+        width: 6vw;
+      }
+      #innhold {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        padding: 0px;
+      }
+      #innhold a {
+        background-color: rgba(20, 30, 25, 0.1);
+        color: black;
+        text-decoration: none;
+        padding: 10px;
+        margin-top: 15px;
+        border-radius: 7px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+      .thumbnail {
+        flex-grow: 1;
+        height: 20vw;
+        width: 10%;
+      }
+      .navTekst {
+        flex-grow: 4;
+        text-align: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div onclick="meny()" id="menyKnapp">
+      <div class="burger"></div>
+      <div class="burger"></div>
+      <div class="burger"></div>
+    </div>
+    <ul id="meny">
+      <li><a class="active" href="./index.html">Home</a></li>
+      <li><a href="./galleri.html">Galleri</a></li>
+      <li><a href="./artikler.html">Artikler</a></li>
+      <li><a href="./omOss.html">Om oss</a></li>
+      <li><a href="./spill.html">Virtuell Plante</a></li>
+    </ul>
+    <div id="🎁">
+      <h1 id="logo">
+        <a href="./index.html"
+          ><img src="./icon.png" alt="Logo av firkløver" /> Ka's Hagesenter</a
+        >
+      </h1>
+      <img
+        src="./robin-wersich-unsplash.jpg"
+        loading="eager"
+        height="100%"
+        width="100%"
+        class="bilde"
+        alt="En katt hviler på bordet omgitt av planter"
+      />
+      <div id="innhold">
+        <a href="./galleri.html">
+          <img
+            src="./galleriBilder/indexPic0.jpg"
+            class="thumbnail bilde"
+            alt="Bilde av potteplanter på krakker og bord innendørs"
+          />
+          <div class="navTekst"><h3>Bli inspirert</h3></div>
+        </a>
+        <a href="./artikler.html">
+          <div class="navTekst"><h3>Les sesongens tips</h3></div>
+          <img
+            src="./galleriBilder/indexPic1.jpg"
+            class="thumbnail bilde"
+            alt="Bilde av en dame i et rom fylt med planter"
+          />
+        </a>
+        <a href="./spill.html">
+          <img
+            src="./galleriBilder/indexPic2.jpg"
+            class="thumbnail bilde"
+            alt="Tegning av en plante i vinduskarmen "
+          />
+          <div class="navTekst"><h3>Spill med virtuell plante</h3></div>
+        </a>
+        <a href="./omOss.html">
+          <div class="navTekst"><h3>Besøk oss</h3></div>
+          <img
+            src="./galleriBilder/indexPic3.jpg"
+            class="thumbnail bilde"
+            alt="Bilde av et blomsterbed"
+          />
+        </a>
+      </div>
+    </div>
+    <script src="./common.js"></script>
+
+    <script></script>
+  </body>
+</html>

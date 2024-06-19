@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ka's Hagesenter - Galleri</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Reseponsivt design -->
+    <link rel="icon" href="icon.png" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <style>
+      #🎁 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .galleri {
+        border-radius: 10px;
+        width: 400px;
+        margin: 10px;
+        box-shadow: 0px 1px 10px rgba(14, 30, 30, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div onclick="meny()" id="menyKnapp">
+      <div class="burger"></div>
+      <div class="burger"></div>
+      <div class="burger"></div>
+    </div>
+    <ul id="meny">
+      <li><a href="./index.html">Home</a></li>
+      <li><a class="active" href="./galleri.html">Galleri</a></li>
+      <li><a href="./artikler.html">Artikler</a></li>
+      <li><a href="./omOss.html">Om oss</a></li>
+      <li><a href="./spill.html">Virtuell Plante</a></li>
+    </ul>
+    <h1>
+      <a href="./index.html"
+        ><img src="./icon.png" height="54px" width="54px" alt="Ikon" /> Ka's
+        Hagesenter</a
+      >
+    </h1>
+    <h2>Galleri</h2>
+    <div id="🎁"></div>
+    <script src="./common.js"></script>
+
+    <script>
+      let bilderEl = [];
+      for (let i = 0; i < 6; i++) {
+        let bildeEl = document.createElement("img");
+        bildeEl.src = "./galleriBilder/" + i + "unsplash.jpg";
+        bildeEl.loading = "lazy";
+        bildeEl.alt = "bilder relatert til planter i et bildegaleri";
+        bildeEl.classList.add("galleri");
+        innpakningEl.appendChild(bildeEl);
+        bilderEl.push(bildeEl);
+      }
+    </script>
+  </body>
+</html>
