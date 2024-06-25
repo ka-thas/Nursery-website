@@ -122,14 +122,14 @@ textarea {
   transform: rotate(-45deg);
   top: -9px;
 }
-ul {
+#meny {
   display: none;
   list-style-type: none;
   margin: 0;
   padding: 1px;
   width: 200px;
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 7px;
+  border-radius: 9px;
   box-shadow: 0 2px 4px rgb(10, 30, 25);
   position: fixed;
   z-index: 890;
